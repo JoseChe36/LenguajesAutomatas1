@@ -1,0 +1,133 @@
+#1.	Todas las palabras que tengan una longitud de 7 o más letras
+Cadena = ['RedBull','Batalla','Ghetto','Brock','Canserbero','Alqaeda','Kodigo','Spartan','Marisol','Betzi','Rossana','Wendy']
+print()
+Cadena_7=[]
+for c in Cadena:
+    if len(c)>=7:
+        Cadena_7.append(c)
+print('Palabras con 7 o más letras :', Cadena_7)
+print('Cantidad de palabras con de 7 o más Letras:',len(Cadena_7))  
+
+
+#2.	Expresiones que no finalicen con una vocal.
+import re
+Texto = "Las expresiones regulares son patrones que se utilizan para hacer coincidir combinaciones de caracteres en cadenas."
+
+Cadena =  r'\w+[b-df-hj-np-tv-z]\b'
+Rest = re.findall(Cadena, Texto)
+print("Expresiones que no terminan en vocal")
+for p in Rest:
+    print(p)
+    
+
+#3.	Las palabras que inicien con “M” donde la segunda letra no sea vocal
+import re
+Texto= "mexico mx mma "
+
+Cadena =  r'\b[mM][^aA-uU]'
+Rest = re.findall(Cadena, Texto)
+
+for t in Rest:
+    print(t)
+
+
+#4.	Expresiones encerradas entre comillas
+import re
+texto= 'JAVASCRIP,"PYTHON", "JAVA", "C++","C##","HTML", RUBI, C'
+patron= r'"(.*?)"'
+lenguaje = re.findall(patron, texto)
+for l in lenguaje:
+    print(l)
+
+
+#5.	Ip’s
+import socket
+
+def ip_Normal(ip):
+    try:
+        socket.inet_aton(ip)
+        return True
+    except socket.error:
+        return False
+
+
+print(ip_Normal('192.168.0.1'))
+print(ip_Normal('192.168.0.2'))
+print(ip_Normal('192.168.0.3'))
+print(ip_Normal('192.168.0.4'))
+
+
+#6.	Horas
+
+import time
+print(time.time())
+print(time.strftime("%H:%M:%S"))
+
+
+
+Tiempo=time.strftime("%H:%M:%S")
+print (Tiempo)
+
+#%c:  hora 
+Form ="%c"
+HR=time.strftime(Form)
+print (HR)
+
+
+#7.	Telefonos
+import re
+Tel = '9851074235, qwerty, 9851010520'
+Cadena = r'(\+34|0034|34)?[-]*(8|9)[ -]*([0-9][ -]*){9}'
+Rest = re.findall(Cadena, Tel)
+
+for t in Rest:
+    print(t)
+
+
+#8.	Correos electrónicos
+import re
+
+Texto = """
+Jose@itsva.net
+Isaac@itsva.net
+Marisol@itsva.com
+Carlos@itsva.net
+Jesus@itsva.net
+Ibis@itsva.com
+"""
+
+Cadena = r'[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}'
+
+Rest = re.findall(Cadena, Texto)
+
+print(Rest)
+
+
+#9.	Url’s
+import re
+
+Texto = 'Página oficial de Python (v. 3.8.0): https://www.python.org/. URL corta de este canal: http://bit.ly/2SiCmCJ'
+
+Cadena = 'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
+
+Rest = re.findall(Cadena, Texto)
+
+for u in Rest:
+    print(u)
+    
+
+#10.	Código postal
+import socket
+
+def cp_Normal(cp):
+    try:
+        socket.inet_aton(cp)
+        return True
+    except socket.error:
+        return False
+
+
+print(cp_Normal('66760'))
+print(cp_Normal('47382'))
+print(cp_Normal('46234'))
+print(cp_Normal('65847'))
